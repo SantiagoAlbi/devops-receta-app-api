@@ -1,9 +1,9 @@
-FROM python:3.9-alpine3.20
+FROM python:3.11-alpine3.20
 LABEL maintainer="londonappdeveloper.com"
 
-ENV PYTHONUNBUFFERED 1
+ENV PYTHONUNBUFFERED=1
 
-ARG UID=101 
+ARG UID=101
 COPY ./requirements.txt /tmp/requirements.txt
 COPY ./requirements.dev.txt /tmp/requirements.dev.txt
 COPY ./scripts /scripts
@@ -39,6 +39,6 @@ ENV PATH="/scripts:/py/bin:$PATH"
 USER django-user
 
 VOLUME /vol/web/media
-VOLUME /vol/web/static 
+VOLUME /vol/web/static
 
 CMD ["run.sh"]
