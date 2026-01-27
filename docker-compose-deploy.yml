@@ -5,6 +5,7 @@ services:
     build:
       context: .
     restart: always
+    user: root
     volumes:
       - static-data:/vol/web/static
       - media-data:/vol/web/media
