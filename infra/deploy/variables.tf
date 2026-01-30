@@ -13,3 +13,11 @@ variable "contact" {
   default     = "devops-team@receta-praguensis.com"
 }
 
+variable "db_username" {
+  description = "Username for the receta app api database"
+  default = "recipeapp"
+}
+
+variable "db_password" {
+  description = "Password for the Terraform database"
+}
