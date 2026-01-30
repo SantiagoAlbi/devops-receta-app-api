@@ -227,5 +227,8 @@ Or find them below:
 - [Deploy a Serverless Django App on Google App Engine](https://londonapp.dev/c5)
 
 
+<<<<<<< HEAD
 Hello da vedsdsd
 6
+=======
+>>>>>>> 5036fdadbf1203d313c188244b8671a08b14b35e
