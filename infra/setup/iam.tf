@@ -9,9 +9,9 @@ resource "aws_iam_access_key" "cd" {
   user = aws_iam_user.cd.name
 }
 
-#################################################  
+################################################## 
 # Policy for Terraform backend to S3 and DynamoDB
-#################################################
+##################################################
 data "aws_iam_policy_document" "tf_backend" {
   statement {
     effect    = "Allow"

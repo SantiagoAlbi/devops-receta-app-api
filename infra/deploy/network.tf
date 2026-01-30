@@ -10,7 +10,7 @@ resource "aws_vpc" "main" {
 }
 
 ##########################
-# Internet Gateway Setup #
+# Internet Gateway Setup ##
 ##########################
 
 resource "aws_internet_gateway" "main" {
