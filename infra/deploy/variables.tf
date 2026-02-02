@@ -37,10 +37,6 @@ variable "django_secret_key" {
 
 
 
-
-#########################3
-
-
 variable "dns_zone_name" {
   description = "Domain name"
   default     = "londonappdev.net- or maybe another"
