@@ -1,3 +1,4 @@
+
 name: Test and Lint
 
 on:
@@ -39,6 +40,14 @@ jobs:
         - name: Checkout 
           uses: actions/checkout@v4
         - name: Terraform lint
+          env:                                          # <--- checkear esto
+            AWS_ACCESS_KEY_ID: dummy
+            AWS_SECRET_ACCESS_KEY: dummy
+            TF_WORKSPACE: default
+            TF_VAR_db_password: dummy
+            TF_VAR_ecr_proxy_image: dummy
+            TF_VAR_ecr_app_image: dummy
+            TF_VAR_django_secret_key: dummy      
           run: |
             cd infra/
             docker compose run --rm terraform -chdir=deploy/ init -backend=false
