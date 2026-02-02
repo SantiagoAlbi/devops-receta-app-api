@@ -1,7 +1,7 @@
 ##
 # ECS Cluster for running app on Fargate.
 ##
-/*
+
 resource "aws_iam_policy" "task_execution_role_policy" {
   name        = "${local.prefix}-task-exec-role-policy"
   path        = "/"
@@ -18,7 +18,7 @@ resource "aws_iam_role_policy_attachment" "task_execution_role" {
   role       = aws_iam_role.task_execution_role.name
   policy_arn = aws_iam_policy.task_execution_role_policy.arn
 }
-
+/*
 resource "aws_iam_role" "app_task" {
   name               = "${local.prefix}-app-task"
   assume_role_policy = file("./templates/ecs/task-assume-role-policy.json")
