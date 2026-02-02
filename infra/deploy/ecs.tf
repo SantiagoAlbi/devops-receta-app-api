@@ -83,10 +83,14 @@ resource "aws_ecs_task_definition" "api" {
             name  = "DB_PASS"
             value = aws_db_instance.main.password
           },
+          {
+            name  = "ALLOWED_HOSTS" #luego eliminar en config final
+            value = "*"
+          }
           #{
-          #  name  = "ALLOWED_HOSTS"
-           # value = aws_route53_record.app.fqdn
-         # }
+          #  name  = "ALLOWED_HOSTS" 
+          # value = aws_route53_record.app.fqdn
+          # }
         ]
         mountPoints = [
           {
@@ -94,11 +98,11 @@ resource "aws_ecs_task_definition" "api" {
             containerPath = "/vol/web/static"
             sourceVolume  = "static"
           },
-          {
+          /*{
             readOnly      = false
             containerPath = "/vol/web/media"
             sourceVolume  = "efs-media"
-          }
+          } */
         ],
         logConfiguration = {
           logDriver = "awslogs"
@@ -133,11 +137,11 @@ resource "aws_ecs_task_definition" "api" {
             containerPath = "/vol/static"
             sourceVolume  = "static"
           },
-          {
+         /* {
             readOnly      = true
             containerPath = "/vol/media"
             sourceVolume  = "efs-media"
-          }
+          } */
         ]
         logConfiguration = {
           logDriver = "awslogs"
@@ -154,7 +158,7 @@ resource "aws_ecs_task_definition" "api" {
   volume {
     name = "static"
   }
-/*
+  /*
   volume {
     name = "efs-media"
     efs_volume_configuration {
@@ -198,7 +202,7 @@ resource "aws_security_group" "ecs_service" {
       aws_subnet.private_b.cidr_block,
     ]
   }
-
+ /*
   # NFS Port for EFS volumes
   egress {
     from_port = 2049
@@ -209,15 +213,17 @@ resource "aws_security_group" "ecs_service" {
       aws_subnet.private_b.cidr_block,
     ]
   }
-
+ */
   # HTTP inbound access
   ingress {
     from_port = 8000
     to_port   = 8000
     protocol  = "tcp"
- #   security_groups = [
-  #    aws_security_group.lb.id
-   # ]
+    cidr_blocks = ["0.0.0.0/0"] #luego eliminar en por comentario posterior
+
+    #   security_groups = [
+    #    aws_security_group.lb.id
+    # ]
   }
 }
 
@@ -238,13 +244,13 @@ resource "aws_ecs_service" "api" {
 
     security_groups = [aws_security_group.ecs_service.id]
   }
-/*
-  load_balancer {
-    target_group_arn = aws_lb_target_group.api.arn
-    container_name   = "proxy"
-    container_port   = 8000
-  }
-*/
+
+  #load_balancer {
+  #  target_group_arn = aws_lb_target_group.api.arn
+  #  container_name   = "proxy"
+  #  container_port   = 8000
+ # }
+
 }
 
 
