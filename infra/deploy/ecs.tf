@@ -252,5 +252,4 @@ resource "aws_ecs_service" "api" {
   # }
 
 }
-
 #
