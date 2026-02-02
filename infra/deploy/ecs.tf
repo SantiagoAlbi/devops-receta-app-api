@@ -44,7 +44,6 @@ resource "aws_ecs_cluster" "main" {
   name = "${local.prefix}-cluster"
 }
 
-/*
 
 resource "aws_ecs_task_definition" "api" {
   family                   = "${local.prefix}-api"
@@ -175,6 +174,7 @@ resource "aws_ecs_task_definition" "api" {
   }
 }
 
+
 resource "aws_security_group" "ecs_service" {
   description = "Access rules for the ECS service."
   name        = "${local.prefix}-ecs-service"
@@ -246,4 +246,4 @@ resource "aws_ecs_service" "api" {
   }
 }
 
-*/
+
