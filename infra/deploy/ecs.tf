@@ -137,7 +137,7 @@ resource "aws_ecs_task_definition" "api" {
             containerPath = "/vol/static"
             sourceVolume  = "static"
           },
-         /* {
+          /* {
             readOnly      = true
             containerPath = "/vol/media"
             sourceVolume  = "efs-media"
@@ -202,7 +202,7 @@ resource "aws_security_group" "ecs_service" {
       aws_subnet.private_b.cidr_block,
     ]
   }
- /*
+  /*
   # NFS Port for EFS volumes
   egress {
     from_port = 2049
@@ -216,9 +216,9 @@ resource "aws_security_group" "ecs_service" {
  */
   # HTTP inbound access
   ingress {
-    from_port = 8000
-    to_port   = 8000
-    protocol  = "tcp"
+    from_port   = 8000
+    to_port     = 8000
+    protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"] #luego eliminar en por comentario posterior
 
     #   security_groups = [
@@ -249,7 +249,7 @@ resource "aws_ecs_service" "api" {
   #  target_group_arn = aws_lb_target_group.api.arn
   #  container_name   = "proxy"
   #  container_port   = 8000
- # }
+  # }
 
 }
 

@@ -1,6 +1,7 @@
 ##########################
 # Network infrastructure #
 ##########################
+/*
 
 resource "aws_vpc" "main" {
   cidr_block           = "10.1.0.0/16"
@@ -201,3 +202,4 @@ resource "aws_vpc_endpoint" "s3" {
     Name = "${local.prefix}-s3-endpoint"
   }
 }
+*/
