@@ -16,3 +16,4 @@ services:
       - TF_VAR_ecr_app_image=${TF_VAR_ecr_app_image}
       - TF_VAR_django_secret_key=${TF_VAR_django_secret_key}
  #   command: ["tail", "-f", "/dev/null"]
+
