@@ -83,10 +83,10 @@ resource "aws_ecs_task_definition" "api" {
             name  = "DB_PASS"
             value = aws_db_instance.main.password
           },
-          {
-            name  = "ALLOWED_HOSTS"
-            value = aws_route53_record.app.fqdn
-          }
+          #{
+          #  name  = "ALLOWED_HOSTS"
+           # value = aws_route53_record.app.fqdn
+         # }
         ]
         mountPoints = [
           {
@@ -154,7 +154,7 @@ resource "aws_ecs_task_definition" "api" {
   volume {
     name = "static"
   }
-
+/*
   volume {
     name = "efs-media"
     efs_volume_configuration {
@@ -167,7 +167,7 @@ resource "aws_ecs_task_definition" "api" {
       }
     }
   }
-
+*/
   runtime_platform {
     operating_system_family = "LINUX"
     cpu_architecture        = "X86_64"
