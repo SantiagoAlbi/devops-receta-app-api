@@ -98,11 +98,12 @@ resource "aws_ecs_task_definition" "api" {
             containerPath = "/vol/web/static"
             sourceVolume  = "static"
           },
-          /*{
+          {
+          
             readOnly      = false
             containerPath = "/vol/web/media"
             sourceVolume  = "efs-media"
-          } */
+          } 
         ],
         logConfiguration = {
           logDriver = "awslogs"
@@ -137,11 +138,11 @@ resource "aws_ecs_task_definition" "api" {
             containerPath = "/vol/static"
             sourceVolume  = "static"
           },
-          /* {
+          {
             readOnly      = true
             containerPath = "/vol/media"
             sourceVolume  = "efs-media"
-          } */
+          } 
         ]
         logConfiguration = {
           logDriver = "awslogs"
@@ -158,7 +159,7 @@ resource "aws_ecs_task_definition" "api" {
   volume {
     name = "static"
   }
-  /*
+
   volume {
     name = "efs-media"
     efs_volume_configuration {
@@ -171,7 +172,7 @@ resource "aws_ecs_task_definition" "api" {
       }
     }
   }
-*/
+
   runtime_platform {
     operating_system_family = "LINUX"
     cpu_architecture        = "X86_64"
@@ -202,7 +203,7 @@ resource "aws_security_group" "ecs_service" {
       aws_subnet.private_b.cidr_block,
     ]
   }
-  /*
+  
   # NFS Port for EFS volumes
   egress {
     from_port = 2049
@@ -213,7 +214,7 @@ resource "aws_security_group" "ecs_service" {
       aws_subnet.private_b.cidr_block,
     ]
   }
- */
+ 
   # HTTP inbound access
   ingress {
     from_port   = 8000
